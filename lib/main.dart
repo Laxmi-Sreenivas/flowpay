@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'Login/loginpage.dart';
+import 'Signup/signup.dart';
 
 void main() {
   runApp(const FlowPay());
