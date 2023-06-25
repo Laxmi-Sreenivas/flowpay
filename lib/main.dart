@@ -11,7 +11,12 @@ class FlowPay extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: LoginPage(),
+      home: Builder(
+      builder: (context) => MediaQuery(
+        data: MediaQuery.of(context).copyWith(),
+        child: SignupPage(),
+      ),
+    ),
     );
   }
 }
