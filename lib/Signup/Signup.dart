@@ -24,7 +24,8 @@ class _SignupPageState extends State<SignupPage> {
       backgroundColor: Colors.black,
       //appBar: AppBar(),
       body: Container(
-        child: Column(
+        child: SingleChildScrollView(
+          child: Column(
           children: [
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -177,6 +178,7 @@ class _SignupPageState extends State<SignupPage> {
               ),
           ],
         ),
+      ),
       ),
     );
   }
