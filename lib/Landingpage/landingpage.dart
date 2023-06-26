@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 class LandingPage extends StatelessWidget {
@@ -26,8 +27,8 @@ class LandingPage extends StatelessWidget {
               ),
             ),
             SizedBox(height: mediaQuery.size.height*0.05),
-            Image.asset(
-              'Assets/flow_logo.svg', // Replace with your image path
+            SvgPicture.asset(
+              'assets/flow_logo.svg', // Replace with your SVG file path
               width: mediaQuery.size.width * 0.5, // Adjust the width as needed
               height: mediaQuery.size.height * 0.2, // Adjust the height as needed
             ),
