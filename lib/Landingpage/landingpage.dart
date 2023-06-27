@@ -31,7 +31,7 @@ class LandingPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'Welcome',
+              'FlowPay',
               style: TextStyle(
                 fontSize: w*0.1,
                 fontWeight: FontWeight.w900,
@@ -40,7 +40,7 @@ class LandingPage extends StatelessWidget {
             ),
             SizedBox(height: mediaQuery.size.height * 0.01),
             Text(
-              'To the Secure payments platform',
+              'The Secure payments platform',
               style: TextStyle(
                 fontSize: w*0.04,
                 color: Colors.white,

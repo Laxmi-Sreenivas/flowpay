@@ -1,5 +1,6 @@
+import 'package:flowpay/welcome/welcome.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flowpay/Login/loginpage.dart';
 class SignupPage extends StatefulWidget {
   @override
   _SignupPageState createState() => _SignupPageState();
@@ -8,11 +9,27 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+
+  void toLogin(BuildContext context){
+        Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (BuildContext context) => LoginPage()),
+        (Route<dynamic> route) => false);
+  }
+
+  void toWelcome(BuildContext context){
+        Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(builder: (BuildContext context) => Welcome()),
+        (Route<dynamic> route) => false);
+  }
 
   @override
   void dispose() {
     phoneNumberController.dispose();
     usernameController.dispose();
+    passwordController.dispose();
     super.dispose();
   }
 
@@ -134,43 +151,113 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ],
             ),
+            
             SizedBox(height: mediaQuery.size.height*0.03),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    mediaQuery.size.width * 0.05,
+                    0,
+                    mediaQuery.size.width * 0.05,
+                    0,
+                  ),
+                  child: Text(
+                    'Password',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: mediaQuery.size.height * 0.08,
+                  padding: EdgeInsets.fromLTRB(
+                    mediaQuery.size.width * 0.05,
+                    mediaQuery.size.width * 0.02,
+                    mediaQuery.size.width * 0.05,
+                    0,
+                  ),
+                  child: TextField(
+                    controller: passwordController,
+                    style: TextStyle(
+                      color: Colors.white,
+                    ),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide: BorderSide(
+                          width: mediaQuery.size.width * 0.01,
+                          color: Colors.green,
+                          style: BorderStyle.solid,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: '**********',
+                      hintStyle: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    obscureText: true, // For password fields, to hide the entered text
+                  ),
+                ),
+              ],
+            ),
+            SizedBox(height: mediaQuery.size.height*0.1),
             ElevatedButton(
               onPressed: () {
-                // Implement the logic to connect Metamask here
+                toWelcome(context);
               },
-              child: Text(
-                'Connect your Metamask',
-                style: TextStyle(
-                  color: Colors.black,
+              child: RichText(
+                text: TextSpan(
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 16,
+                  ),
+                  children: [
+                    TextSpan(
+                      text: 'Connect ',
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                      ),
+                    ),
+                    TextSpan(
+                      text: 'your Metamask',
+                      
+                    ),
+                  ],
                 ),
               ),
               style: ElevatedButton.styleFrom(
                 primary: Color.fromARGB(255, 82, 255, 175),
                 shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(mediaQuery.size.width * 0.05),
-              ),
+                  borderRadius: BorderRadius.circular(mediaQuery.size.width * 0.05),
+                ),
               ),
             ),
-            SizedBox(height: mediaQuery.size.height*0.2),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
-                    'Don\'t have an account? ',
+                    'Already have an account? ',
                     style: TextStyle(
                       color: Colors.white,
                     ),
                   ),
                   TextButton(
                     onPressed: () {
+                      toLogin(context);
                     },
                     child: Text(
-                      'Create',
+                      'login',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
                         color: Color.fromARGB(255, 82, 255, 175),
+                        fontSize: 18,
                       ),
                     ),
                   ),
