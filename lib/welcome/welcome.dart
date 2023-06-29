@@ -8,10 +8,11 @@ class Welcome extends StatelessWidget {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
     double w = mediaQuery.size.width;
     double h = mediaQuery.size.height;
-    return Column(
+    return SingleChildScrollView(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
         crossAxisAlignment: CrossAxisAlignment.start,
-        children:[
+        children: [
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -30,39 +31,44 @@ class Welcome extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(width:w*0.03),
+              SizedBox(width: w * 0.03),
               ProfileCard(),
-              SizedBox(width:w*0.03),
+              SizedBox(width: w * 0.03),
             ],
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(w*0.05,w*0.03,w*0.05,w*0.03),
+            padding: EdgeInsets.fromLTRB(w * 0.05, w * 0.03, w * 0.05, w * 0.03),
             child: Text(
               'Favourites',
               style: TextStyle(
                 color: Colors.green,
-                fontSize: w*0.07,
+                fontSize: w * 0.07,
               ),
             ),
           ),
-          Padding(padding: EdgeInsets.fromLTRB(w*0.04,0,w*0.04,w*0.04),
-          child:Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: List.generate(5, (rowIndex) {
-              return Column(
-                children: List.generate(3, (colIndex) {
-                  //final index = rowIndex * 3 + colIndex;
-                  return Padding(
-                    padding: EdgeInsets.all(w * 0.02),
-                    child: Favourite(size: w*0.14,icon: Icons.person,),
-                  );
-                }),
-              );
-            }),
-          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(w * 0.04, 0, w * 0.04, w * 0.04),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: List.generate(4, (rowIndex) {
+                return Column(
+                  children: List.generate(3, (colIndex) {
+                    //final index = rowIndex * 3 + colIndex;
+                    return Padding(
+                      padding: EdgeInsets.fromLTRB(w * 0.04,w * 0.02,w * 0.03,w * 0.02),
+                      child: Favourite(
+                        size: w * 0.16,
+                        icon: Icons.person,
+                        username: 'Chandrika',
+                      ),
+                    );
+                  }),
+                );
+              }),
+            ),
           ),
         ],
-      );
-    
+      ),
+    );
   }
 }
