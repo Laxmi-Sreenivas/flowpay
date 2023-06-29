@@ -17,7 +17,7 @@ class BalanceCard extends StatelessWidget {
         horizontal: min(w, h) * 0.05,
       ),
       padding: EdgeInsets.all(min(w, h) * 0.03),
-      color: Colors.green, //Color.fromARGB(255, 4, 192, 123),
+      color: const Color.fromARGB(255, 4, 192, 123),//Colors.green,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
