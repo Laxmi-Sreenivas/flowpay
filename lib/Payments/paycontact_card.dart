@@ -17,6 +17,7 @@ class PayContactCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: Colors.grey[300], // Set the background color of the card
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Row(
@@ -35,10 +36,16 @@ class PayContactCard extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
+                      color: Colors.black, // Set the text color
                     ),
                   ),
                   SizedBox(height: 8),
-                  Text(phoneNumber),
+                  Text(
+                    phoneNumber,
+                    style: TextStyle(
+                      color: Colors.black, // Set the text color
+                    ),
+                  ),
                 ],
               ),
             ),
