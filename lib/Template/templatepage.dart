@@ -1,3 +1,4 @@
+import 'package:flowpay/Payments/paymentspage.dart';
 import 'package:flowpay/Template/navbar.dart';
 import 'package:flowpay/Template/topbar.dart';
 import 'package:flowpay/Transactions/transactionpage.dart';
@@ -15,7 +16,7 @@ class _PageTemplateState extends State<PageTemplate> {
   int pageIndex = 0;
   List pages = [ //To Be Replaced By Actual Pages
     Welcome(),
-    Container(color: Colors.yellow),
+    PaymentsPage(),
     TransacationPage(),
     Container(color: Colors.red)
   ];
