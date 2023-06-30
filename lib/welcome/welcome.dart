@@ -36,7 +36,8 @@ class Welcome extends StatelessWidget {
             ],
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(w * 0.05, w * 0.03, w * 0.05, w * 0.03),
+            padding:
+                EdgeInsets.fromLTRB(w * 0.05, w * 0.03, w * 0.05, w * 0.03),
             child: Text(
               'Favourites',
               style: TextStyle(
@@ -45,23 +46,28 @@ class Welcome extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(w * 0.04, 0, w * 0.04, w * 0.04),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: List.generate(4, (rowIndex) {
-                return Column(
-                  children: List.generate(3, (colIndex) {
-                    //final index = rowIndex * 3 + colIndex;
-                    return
-                    Favourite(
-                        icon: Icons.person,
-                        username: 'Chandrika',
+          Container(
+            margin: EdgeInsets.symmetric(horizontal: w * 0.01),
+            child: SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: List.generate(4, (rowIndex) {
+                  return Column(
+                    children: List.generate(3, (colIndex) {
+                      //final index = rowIndex * 3 + colIndex;
+                      return Padding(
+                        padding: EdgeInsets.fromLTRB(
+                            w * 0.04, w * 0.02, w * 0.04, w * 0.02),
+                        child: Favourite(
+                          icon: Icons.person,
+                          username: 'Chandrika',
+                        ),
                       );
-                    
-                  }),
-                );
-              }),
+                    }),
+                  );
+                }),
+              ),
             ),
           ),
         ],
