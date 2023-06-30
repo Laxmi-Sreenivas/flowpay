@@ -1,4 +1,4 @@
-import 'package:flowpay/welcome/welcome.dart';
+import 'package:flowpay/Template/templatepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flowpay/Login/loginpage.dart';
 class SignupPage extends StatefulWidget {
@@ -21,7 +21,7 @@ class _SignupPageState extends State<SignupPage> {
   void toWelcome(BuildContext context){
         Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (BuildContext context) => Welcome()),
+        MaterialPageRoute(builder: (BuildContext context) => PageTemplate()),
         (Route<dynamic> route) => false);
   }
 
