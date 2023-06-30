@@ -7,7 +7,6 @@ class Welcome extends StatelessWidget {
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
     double w = mediaQuery.size.width;
-    double h = mediaQuery.size.height;
     return SingleChildScrollView(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -54,14 +53,12 @@ class Welcome extends StatelessWidget {
                 return Column(
                   children: List.generate(3, (colIndex) {
                     //final index = rowIndex * 3 + colIndex;
-                    return Padding(
-                      padding: EdgeInsets.fromLTRB(w * 0.04,w * 0.02,w * 0.03,w * 0.02),
-                      child: Favourite(
-                        size: w * 0.16,
+                    return
+                    Favourite(
                         icon: Icons.person,
                         username: 'Chandrika',
-                      ),
-                    );
+                      );
+                    
                   }),
                 );
               }),
