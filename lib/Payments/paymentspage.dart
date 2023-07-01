@@ -1,6 +1,6 @@
 import 'package:flowpay/Payments/paycontact_card.dart';
+import 'package:flowpay/Payments/paymentstile.dart';
 import 'package:flutter/material.dart';
-import 'package:flowpay/Transactions/historytile.dart';
 
 class PaymentsPage extends StatefulWidget {
   @override
@@ -9,6 +9,7 @@ class PaymentsPage extends StatefulWidget {
 
 class _PaymentsPageState extends State<PaymentsPage> {
   String enteredText = '';
+  double transferAmount = 0;
 
   List<Map<String, String>> contactList = [
     {
@@ -16,34 +17,87 @@ class _PaymentsPageState extends State<PaymentsPage> {
       'username': 'John Doe',
       'phoneNumber': '+1234567890',
     },
-    {
-      'profilePhotoUrl': 'https://googleflutter.com/sample_image.jpg',
-      'username': 'Jane Smith',
-      'phoneNumber': '+9876543210',
-    },
-    {
-      'profilePhotoUrl': 'https://googleflutter.com/sample_image.jpg',
-      'username': 'Alice Johnson',
-      'phoneNumber': '+2468135790',
-    },
   ];
 
   @override
   Widget build(BuildContext context) {
-
     final MediaQueryData mediaQuery = MediaQuery.of(context);
     double w = mediaQuery.size.width;
     double h = mediaQuery.size.height;
 
-    List<HistoryTile> Paymenthistory = List.filled(
-        6,
-        const HistoryTile(
-          sender: "Chandrika",
-          time: "March 1, 2023 at 17:40 PM",
-          amount: 143,
-        ));
+    List<PaymentsTile> paymentHistory = List.filled(
+      6,
+      const PaymentsTile(
+        profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg',
+        username: 'John Doe',
+        phoneNumber: '+1234567890',)
+    );
 
-      
+    void _showTransferDialog() {
+      showDialog(
+        context: context,
+        builder: (BuildContext context) {
+          return Dialog(
+            child: Container(
+              padding: EdgeInsets.all(16),
+              width: w * 0.7, // Adjust the width as per your requirements
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Transfer to',
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                  ),
+                  SizedBox(height: 16),
+                  TextField(
+                    onChanged: (value) {
+                      setState(() {
+                        transferAmount = double.parse(value);
+                      });
+                    },
+                    keyboardType: TextInputType.number,
+                    style: TextStyle(color: Colors.black),
+                    decoration: InputDecoration(
+                      hintText: 'Enter the amount',
+                      filled: true,
+                      fillColor: Colors.grey[300],
+                      hintStyle: TextStyle(color: Colors.grey),
+                      enabledBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                      focusedBorder: UnderlineInputBorder(
+                        borderSide: BorderSide(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('Cancel'),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          // Perform the transfer logic here
+                          print('Transfer amount: $transferAmount');
+                          Navigator.of(context).pop();
+                        },
+                        child: Text('Transfer'),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          );
+        },
+      );
+    }
+
     return SingleChildScrollView(
       child: Padding(
         padding: EdgeInsets.all(16.0),
@@ -87,14 +141,18 @@ class _PaymentsPageState extends State<PaymentsPage> {
                     username: contact['username']!,
                     phoneNumber: contact['phoneNumber']!,
                     onPayPressed: () {
-                      print('Pay button pressed');
+                      _showTransferDialog();
                     },
                   );
                 }).toList(),
               ),
             ],
-            SizedBox(height:h*0.03),
-            ...Paymenthistory,
+            SizedBox(height: h * 0.03),
+            Text(
+                'Contacts:',
+                style: TextStyle(fontSize: 16, color: Colors.green),
+              ),
+            ...paymentHistory,
           ],
         ),
       ),
