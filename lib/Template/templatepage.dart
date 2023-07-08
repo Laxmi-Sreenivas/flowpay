@@ -1,4 +1,7 @@
+import 'dart:collection';
+
 import 'package:flowpay/Payments/paymentspage.dart';
+import 'package:flowpay/Split/splitscreen.dart';
 import 'package:flowpay/Split/splitscreen.dart';
 import 'package:flowpay/Template/navbar.dart';
 import 'package:flowpay/Template/topbar.dart';

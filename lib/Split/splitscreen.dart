@@ -17,7 +17,7 @@ class SplitScreen extends StatelessWidget {
         children: [
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20),
-            color: const Color(0xFFF0F8FF),
+            color: Colors.black,
             child: Column(
               children: [
                 const Gap(15),
@@ -33,7 +33,7 @@ class SplitScreen extends StatelessWidget {
                       children: [
                         IconButton(
                           icon: Image.asset(
-                            'assets/images/pencil.png',
+                            'assets/pencil.png',
                             width: 36,
                             height: 36,
                           ),
@@ -42,7 +42,7 @@ class SplitScreen extends StatelessWidget {
                         IconButton(
                           onPressed: () {},
                           icon: Image.asset(
-                            'assets/images/img.png',
+                            'assets/img.png',
                             width: 36,
                             height: 36,
                           ),
@@ -87,7 +87,7 @@ class SplitScreen extends StatelessWidget {
                         IconButton(
                           onPressed: () {},
                           icon: Image.asset(
-                            'assets/images/img.png',
+                            'assets/img.png',
                             width: 36,
                             height: 36,
                           ),

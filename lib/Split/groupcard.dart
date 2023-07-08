@@ -15,10 +15,9 @@ class GroupCard extends StatelessWidget {
       height: 200,
       child: Container(
           margin: const EdgeInsets.only(right: 16),
-
           decoration: const BoxDecoration(
             image: DecorationImage(
-              image: AssetImage('assets/images/cardbg.jpg'), // Replace with your image path
+              image: AssetImage('assets/cardbg.jpg'), // Replace with your image path
               fit: BoxFit.cover,
             ),
             borderRadius: const BorderRadius.all(Radius.circular(21)),
