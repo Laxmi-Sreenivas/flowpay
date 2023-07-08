@@ -1,51 +1,50 @@
-import 'package:flowpay/Split/styles/app_styles.dart';
-import 'package:flowpay/Split/widget/avatar.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
-import 'package:flowpay/Split/styles/app_layout.dart';
+class IndCardWidget extends StatelessWidget {
+  final String profilePhotoUrl;
+  final String username;
+  final String amount;
 
-class IndCard extends StatelessWidget {
-  const IndCard({super.key});
+  const IndCardWidget({
+    super.key,
+    required this.profilePhotoUrl,
+    required this.username,
+    required this.amount,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final size = AppLayout.getSize(context);
+    double w = MediaQuery.of(context).size.width;
+    double h = MediaQuery.of(context).size.height;
     return SizedBox(
-      width: size.width,
-      height: 80,
-      child: Container(
-        color: const Color(0xFFF0F8FF),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, // Center the content vertically
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center, // Center the content horizontally
-                children: [
-                  const Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: UserAvatar(filename: "trump.jpeg"),
-                  ),
-                  Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: Text(
-                      "Donald Trump",
-                      style: Styles.headLineStyle2,
-                    ),
-                  ),
-                  const Spacer(),
-                  Padding(
-                    padding: EdgeInsets.only(right: 20),
-                    child: Text(
-                      "+####",
-                      style: Styles.headLineStyle3,
-                    ),
-                  ),
-                ],
-              )
-            ],
+      height: h*0.08,
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start, // Center the content horizontally
+        children: [
+          SizedBox(width: w*0.03),
+          CircleAvatar(
+            backgroundColor: Colors.blue,
+            backgroundImage: NetworkImage(profilePhotoUrl),
+            radius: w * 0.07,
           ),
-        ),
+          SizedBox(width: w*0.03),
+          Text(
+            username,
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: w*0.06,
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(width: w*0.4),
+          Text(
+            amount,
+            style: TextStyle(
+              color: amount.startsWith('+') ? Colors.green : Colors.red,
+              fontSize: w * 0.05,
+            ),
+          ),
+        ],
       ),
     );
   }

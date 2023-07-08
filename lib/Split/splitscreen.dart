@@ -13,108 +13,172 @@ class SplitScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final MediaQueryData mediaQuery = MediaQuery.of(context);
+    double w = mediaQuery.size.width;
+    double h = mediaQuery.size.height;
     return ListView(
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
-            color: Colors.black,
-            child: Column(
-              children: [
-                const Gap(15),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
+          SizedBox(height: h*0.01),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(width:w*0.08),
+              Text(
                       "Your Groups",
-                      style: Styles.mainHeadStyle,
+                      style: Styles.mainHeadStyle.copyWith(color: Colors.white),
                     ),
-                    Container(
-                        child: Row(
-                      children: [
-                        IconButton(
-                          icon: Image.asset(
-                            'assets/pencil.png',
-                            width: 36,
-                            height: 36,
-                          ),
+              SizedBox(width:w*0.23),
+              IconButton(
+                          icon: Icon(Icons.add,color: Colors.white),
                           onPressed: () {},
                         ),
-                        IconButton(
+              IconButton(
                           onPressed: () {},
-                          icon: Image.asset(
-                            'assets/img.png',
-                            width: 36,
-                            height: 36,
-                          ),
+                          icon: Icon(Icons.edit,color:Colors.white)
                         ),
-                      ],
-                    ))
-                  ],
-                )
-              ],
-            ),
+            ],
           ),
-          const Gap(15),
-          const SingleChildScrollView(
+          // Container(
+          //   padding: EdgeInsets.fromLTRB(w*0.08,0, w*0.08, 0),
+          //   color: Colors.black,
+          //   child: Column(
+          //     children: [
+          //       const Gap(15),
+          //       Row(
+          //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          //         children: [
+          //           Text(
+          //             "Your Groups",
+          //             style: Styles.mainHeadStyle.copyWith(color: Colors.white),
+          //           ),
+          //           Container(
+          //               child: Row(
+          //             children: [
+          //               IconButton(
+          //                 icon: Icon(Icons.add,color: Colors.white),
+          //                 onPressed: () {},
+          //               ),
+          //               IconButton(
+          //                 onPressed: () {},
+          //                 icon: Icon(Icons.edit,color:Colors.white)
+          //               ),
+          //             ],
+          //           ))
+          //         ],
+          //       )
+          //     ],
+          //   ),
+          // ),
+          SingleChildScrollView(
             scrollDirection: Axis.horizontal,
-            padding: EdgeInsets.only(left: 16),
-            child: Row(
-              children: [
-                GroupCard(),
-                GroupCard(),
-                GroupCard(),
-                GroupCard(),
-              ],
-            ),
-          ),
-          const Gap(20),
-          Container(
-            color: const Color(0xFFF0F8FF),
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: EdgeInsets.only(left: w*0.03),
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Gap(15),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    GroupCard(
+                      groupName: 'Group Name',
+                      numberOfMembers: 5,
+                      totalBill: 100,
+                      yourBill: 20,
+                    ),
+                    GroupCard(
+                        groupName: 'Group Name',
+                        numberOfMembers: 5,
+                        totalBill: 100,
+                        yourBill: 20,
+                      ),
+                    GroupCard(
+                      groupName: 'Group Name',
+                      numberOfMembers: 5,
+                      totalBill: 100,
+                      yourBill: 20,
+                    ),
+                    GroupCard(
+                      groupName: 'Group Name',
+                      numberOfMembers: 5,
+                      totalBill: 100,
+                      yourBill: 20,
+                    )
+                  ],
+                ),
+                SizedBox(height: h*0.03),
+          Container(
+            color: Colors.black,
+            padding: EdgeInsets.only(left: w*0.04),
+            child:
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Text(
-                      "Individual Transactions",
-                      style: Styles.mainHeadStyle2,
+                      "Group Transactions",
+                      style: Styles.mainHeadStyle2.copyWith(color: Colors.blue),
                     ),
                     Container(
                         child: Row(
                       children: [
                         IconButton(
                           onPressed: () {},
-                          icon: Image.asset(
-                            'assets/img.png',
-                            width: 36,
-                            height: 36,
-                          ),
+                          icon: Icon(Icons.add,color: Colors.blue)
                         ),
                       ],
                     ))
                   ],
-                )
-              ],
             ),
           ),
           const SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Column(
               children: [
-                IndCard(),
-                IndCard(),
-                IndCard(),
-                IndCard(),
-                IndCard(),
-                IndCard(),
-                IndCard(),
-                IndCard(),
-                IndCard(),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '+980',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '-710',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '+980',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '-710',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '+980',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '-710',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '+143',
+                ),
+                IndCardWidget(
+                  profilePhotoUrl: 'https://googleflutter.com/sample_image.jpg', 
+                  username: 'John Doe', 
+                  amount: '-710',
+                ),
               ],
             ),
-          )
+          ),
+              ],
+            )
+            
+          ),
+          
         ],
       ) ;
   }
