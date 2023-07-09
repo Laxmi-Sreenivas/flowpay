@@ -36,7 +36,7 @@ class IndCardWidget extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(width: w*0.4),
+          SizedBox(width: w*0.35),
           Text(
             amount,
             style: TextStyle(

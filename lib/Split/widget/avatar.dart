@@ -15,7 +15,7 @@ class UserAvatar extends StatelessWidget {
       backgroundColor: Colors.white,
       child: CircleAvatar(
         radius: 29,
-        backgroundImage: Image.asset('assets/images/$filename').image,
+        backgroundImage: Image.asset('lib/Assets/$filename').image,
       ),
     );
   }
