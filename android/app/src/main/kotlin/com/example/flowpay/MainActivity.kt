@@ -13,7 +13,9 @@ import kotlinx.coroutines.withContext
 import com.portto.fcl.Fcl 
 import com.portto.fcl.config.Network
 import com.portto.fcl.provider.blocto.Blocto
-import com.portto.fcl.provider.dapper.Dapper
+import com.portto.fcl.config.Config
+import com.portto.fcl.config.Config.Option.SelectedWalletProvider
+
 
 class MainActivity: FlutterActivity() {
     private val FCL_CHANNEL = "com.flowpay/fcl"
@@ -40,7 +42,7 @@ class MainActivity: FlutterActivity() {
                         
                         val userAddress = Fcl.login()
                         withContext(Dispatchers.Main) {
-                            result.success(userAddress)
+                            result.success("Yess")
                         }
                     }
                 }
