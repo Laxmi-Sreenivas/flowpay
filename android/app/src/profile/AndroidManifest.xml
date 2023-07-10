@@ -3,5 +3,9 @@
          the Flutter tool needs it to communicate with the running application
          to allow setting breakpoints, to provide hot reload, etc.
     -->
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET"/>    
+        <application>
+            <provider android:authorities="com.portto.fcl.context"
+                android:name="com.portto.fcl.lifecycle.FCLContentProvider" android:exported="false" />
+        </application>
 </manifest>

@@ -1,8 +1,11 @@
+import 'dart:math';
+
 import 'package:flowpay/Login/options.dart';
 import 'package:flowpay/Login/textbox.dart';
 import 'package:flowpay/Login/topinfo.dart';
 import 'package:flowpay/Template/templatepage.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 class LoginPage extends StatefulWidget {
@@ -16,6 +19,12 @@ class _LoginPageState extends State<LoginPage> {
   final mobileField = TextEditingController();
   final passwdField = TextEditingController();
 
+  static const fcl = const MethodChannel("com.flowpay/fcl");
+
+  Future<String> connect() async{
+    return await fcl.invokeMethod('ConnectWallet');
+  }
+
   @override
   void dispose() {
     mobileField.dispose();
@@ -23,14 +32,14 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void toPagTemplate(){
+  void toPageTemplate(){
     Navigator.pushAndRemoveUntil(
     context,
     MaterialPageRoute(builder: (BuildContext context) => PageTemplate()),
     (Route<dynamic> route) => false);
   }
 
-  void login() {
+  Future login() async{
     String mobileNo = mobileField.text;
     String passwd = passwdField.text;
 
@@ -38,8 +47,10 @@ class _LoginPageState extends State<LoginPage> {
     print(mobileNo);
     print(passwd);
 
+    print(await connect());
+
     // If Valid Login
-    toPagTemplate();
+    toPageTemplate();
   }
 
   @override
