@@ -4,12 +4,14 @@ class IndCardWidget extends StatelessWidget {
   final String profilePhotoUrl;
   final String username;
   final String amount;
+  final String individual_id;
 
   const IndCardWidget({
     super.key,
     required this.profilePhotoUrl,
     required this.username,
     required this.amount,
+    required this.individual_id,
   });
 
   @override
@@ -36,7 +38,7 @@ class IndCardWidget extends StatelessWidget {
               fontWeight: FontWeight.w600,
             ),
           ),
-          SizedBox(width: w*0.35),
+          SizedBox(width: w*0.3),
           Text(
             amount,
             style: TextStyle(
@@ -44,6 +46,14 @@ class IndCardWidget extends StatelessWidget {
               fontSize: w * 0.05,
             ),
           ),
+          IconButton(
+            onPressed: (){
+              print(individual_id);
+            }
+            , icon: Icon(
+              Icons.delete,
+              color: Colors.white,
+              ))
         ],
       ),
     );
