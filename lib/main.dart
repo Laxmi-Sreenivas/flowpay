@@ -1,6 +1,5 @@
+import 'package:flowpay/Landingpage/landingpage.dart';
 import 'package:flutter/material.dart';
-import 'Login/loginpage.dart';
-import 'Signup/signup.dart';
 
 void main() {
   runApp(const FlowPay());
@@ -15,7 +14,7 @@ class FlowPay extends StatelessWidget {
       home: Builder(
       builder: (context) => MediaQuery(
         data: MediaQuery.of(context).copyWith(),
-        child: SignupPage(),
+        child: LandingPage(),
       ),
     ),
     );

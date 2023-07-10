@@ -1,4 +1,8 @@
+import 'dart:collection';
+
 import 'package:flowpay/Payments/paymentspage.dart';
+import 'package:flowpay/Split/splitscreen.dart';
+import 'package:flowpay/Split/splitscreen.dart';
 import 'package:flowpay/Template/navbar.dart';
 import 'package:flowpay/Template/topbar.dart';
 import 'package:flowpay/Transactions/transactionpage.dart';
@@ -18,7 +22,7 @@ class _PageTemplateState extends State<PageTemplate> {
     Welcome(),
     PaymentsPage(),
     TransacationPage(),
-    Container(color: Colors.red)
+    SplitScreen()
   ];
 
   void moveToIndex(int index) {
