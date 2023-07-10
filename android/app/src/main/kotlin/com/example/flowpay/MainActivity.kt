@@ -31,11 +31,14 @@ class MainActivity: FlutterActivity() {
                 call.method.equals("ConnectWallet") -> {
                     Fcl.init(
                         env =  Network.TESTNET,
-                        supportedWallets = listOf(Blocto.getInstance(APP_TESTNET_ID),Dapper)
+                        supportedWallets = listOf(Blocto.getInstance(APP_TESTNET_ID))
                     )
                     
                     GlobalScope.launch {
-                        val userAddress = Fcl.authenticate()
+                        val providerList = Fcl.config.supportedWallets
+                        Fcl.config.put(Config.Option.SelectedWalletProvider(providerList.get(0)))
+                        
+                        val userAddress = Fcl.login()
                         withContext(Dispatchers.Main) {
                             result.success(userAddress)
                         }
