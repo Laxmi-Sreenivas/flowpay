@@ -1,3 +1,4 @@
+import 'package:flowpay/Signup/profilepic.dart';
 import 'package:flowpay/Template/templatepage.dart';
 import 'package:flutter/material.dart';
 import 'package:flowpay/Login/loginpage.dart';
@@ -10,6 +11,7 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController phoneNumberController = TextEditingController();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController emailController = TextEditingController();
 
   void toLogin(BuildContext context){
         Navigator.pushAndRemoveUntil(
@@ -30,6 +32,7 @@ class _SignupPageState extends State<SignupPage> {
     phoneNumberController.dispose();
     usernameController.dispose();
     passwordController.dispose();
+    emailController.dispose();
     super.dispose();
   }
 
@@ -47,7 +50,7 @@ class _SignupPageState extends State<SignupPage> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SizedBox(height: mediaQuery.size.height*0.2),
+                SizedBox(height: mediaQuery.size.height*0.1),
                 Text(
                   'Signup',
                   style: TextStyle(
@@ -66,7 +69,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ],
             ),
-            SizedBox(height: mediaQuery.size.height*0.05),
+            SizedBox(height: mediaQuery.size.height*0.03),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -86,7 +89,7 @@ class _SignupPageState extends State<SignupPage> {
                   child: TextField(
                     controller: phoneNumberController,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -129,7 +132,7 @@ class _SignupPageState extends State<SignupPage> {
                   child: TextField(
                     controller: usernameController,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -151,7 +154,60 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ],
             ),
-            
+            SizedBox(height: mediaQuery.size.height*0.03),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: EdgeInsets.fromLTRB(
+                    mediaQuery.size.width * 0.05,
+                    0,
+                    mediaQuery.size.width * 0.05,
+                    0,
+                  ),
+                  child: Text(
+                    'Email id',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
+                Container(
+                  height: mediaQuery.size.height * 0.08,
+                  padding: EdgeInsets.fromLTRB(
+                    mediaQuery.size.width * 0.05,
+                    mediaQuery.size.width * 0.02,
+                    mediaQuery.size.width * 0.05,
+                    0,
+                  ),
+                  child: TextField(
+                    controller: emailController,
+                    style: TextStyle(
+                      color: Colors.black,
+                    ),
+                    decoration: InputDecoration(
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(6),
+                        borderSide: BorderSide(
+                          width: mediaQuery.size.width * 0.01,
+                          color: Colors.green,
+                          style: BorderStyle.solid,
+                        ),
+                      ),
+                      filled: true,
+                      fillColor: Colors.white,
+                      hintText: '**********',
+                      hintStyle: TextStyle(
+                        color: Colors.grey,
+                      ),
+                    ),
+                    obscureText: true, // For password fields, to hide the entered text
+                  ),
+                ),
+                  
+              ],
+            ),
             SizedBox(height: mediaQuery.size.height*0.03),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -182,7 +238,7 @@ class _SignupPageState extends State<SignupPage> {
                   child: TextField(
                     controller: passwordController,
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                     decoration: InputDecoration(
                       border: OutlineInputBorder(
@@ -203,9 +259,12 @@ class _SignupPageState extends State<SignupPage> {
                     obscureText: true, // For password fields, to hide the entered text
                   ),
                 ),
+                  
               ],
             ),
-            SizedBox(height: mediaQuery.size.height*0.1),
+            SizedBox(height: mediaQuery.size.height*0.02),
+            Profilepic(),
+            SizedBox(height: mediaQuery.size.height*0.05),
             ElevatedButton(
               onPressed: () {
                 toWelcome(context);
@@ -232,7 +291,7 @@ class _SignupPageState extends State<SignupPage> {
                 ),
               ),
               style: ElevatedButton.styleFrom(
-                primary: Color.fromARGB(255, 82, 255, 175),
+                primary: Colors.green,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(mediaQuery.size.width * 0.05),
                 ),
@@ -256,7 +315,7 @@ class _SignupPageState extends State<SignupPage> {
                       'login',
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 82, 255, 175),
+                        color: Colors.green,
                         fontSize: 18,
                       ),
                     ),
