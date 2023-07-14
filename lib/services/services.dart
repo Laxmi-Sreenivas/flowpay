@@ -27,7 +27,7 @@ class Services {
           .doc(firebaseuser.uid)
           .set({
         "UserName": UserName,
-        "PhoneNumber": phoneNumber,
+        "PhoneNumber": phoneNumber
       });
       return (true);
     } catch (e) {
