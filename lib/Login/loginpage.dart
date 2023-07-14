@@ -13,12 +13,12 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  final mobileField = TextEditingController();
+  final emailField = TextEditingController();
   final passwdField = TextEditingController();
 
   @override
   void dispose() {
-    mobileField.dispose();
+    emailField.dispose();
     passwdField.dispose();
     super.dispose();
   }
@@ -31,7 +31,7 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   Future login() async{
-    String mobileNo = mobileField.text;
+    String mobileNo = emailField.text;
     String passwd = passwdField.text;
 
     //To Be Commented + Backend Implementation Required
@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 children: [
                   TopInfo(),
-                  TextBox(phoneNo: mobileField, passwd: passwdField),
+                  TextBox(email: emailField, passwd: passwdField),
                   Options(loginbutton: login),
                 ],
               ),
