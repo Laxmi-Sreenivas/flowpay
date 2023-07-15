@@ -1,8 +1,12 @@
 import 'package:flowpay/welcome/favourite.dart';
 import 'package:flutter/material.dart';
 import 'package:flowpay/welcome/profilecard.dart';
+import 'package:flowpay/services/services.dart';
 
 class Welcome extends StatelessWidget {
+  final Services services;
+  const Welcome({super.key, required this.services});
+  
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
