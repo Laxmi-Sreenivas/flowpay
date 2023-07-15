@@ -3,7 +3,7 @@ import 'package:flowpay/Login/textbox.dart';
 import 'package:flowpay/Login/topinfo.dart';
 import 'package:flowpay/Template/templatepage.dart';
 import 'package:flutter/material.dart';
-
+import 'package:flowpay/services/services.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -15,7 +15,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final emailField = TextEditingController();
   final passwdField = TextEditingController();
-
+  Services services = new Services();
   @override
   void dispose() {
     emailField.dispose();
@@ -23,23 +23,25 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
-  void toPageTemplate(){
+  void toPageTemplate(String mobileNo, String password) {
+    services.signin(mobileNo, password);
     Navigator.pushAndRemoveUntil(
-    context,
-    MaterialPageRoute(builder: (BuildContext context) => PageTemplate()),
-    (Route<dynamic> route) => false);
+        context,
+        MaterialPageRoute(
+            builder: (BuildContext context) =>
+                PageTemplate(services: services)),
+        (Route<dynamic> route) => false);
   }
 
-  Future login() async{
+  Future login() async {
     String mobileNo = emailField.text;
     String passwd = passwdField.text;
 
     //To Be Commented + Backend Implementation Required
     print(mobileNo);
     print(passwd);
-
     // If Valid Login
-    toPageTemplate();
+    toPageTemplate(mobileNo, passwd);
   }
 
   @override
@@ -56,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
             color: Colors.black,
             width: double.infinity,
             height: double.infinity,
-            padding: EdgeInsets.fromLTRB(sidePad, topPad /8, sidePad,0),
+            padding: EdgeInsets.fromLTRB(sidePad, topPad / 8, sidePad, 0),
             child: SingleChildScrollView(
               child: Column(
                 children: [

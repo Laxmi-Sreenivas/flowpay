@@ -1,10 +1,13 @@
 import 'package:flowpay/Signup/profilepic.dart';
 import 'package:flowpay/Template/templatepage.dart';
+import 'package:flowpay/welcome/welcome.dart';
 import 'package:flutter/material.dart';
 import 'package:flowpay/Login/loginpage.dart';
 import 'package:flowpay/services/services.dart';
 
 class SignupPage extends StatefulWidget {
+  const SignupPage({super.key});
+
   @override
   _SignupPageState createState() => _SignupPageState();
 }
@@ -15,6 +18,8 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController emailController = TextEditingController();
 
+  Services services = new Services();
+
   void toLogin(BuildContext context) {
     Navigator.pushAndRemoveUntil(
         context,
@@ -23,9 +28,14 @@ class _SignupPageState extends State<SignupPage> {
   }
 
   void toWelcome(BuildContext context) {
+    services.register(phoneNumberController.text, emailController.text,
+        passwordController.text);
+        
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(builder: (BuildContext context) => PageTemplate()),
+        MaterialPageRoute(
+            builder: (BuildContext context) =>
+                PageTemplate(services: services)),
         (Route<dynamic> route) => false);
   }
 
@@ -41,7 +51,6 @@ class _SignupPageState extends State<SignupPage> {
   @override
   Widget build(BuildContext context) {
     final MediaQueryData mediaQuery = MediaQuery.of(context);
-    Services services = new Services();
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -278,9 +287,7 @@ class _SignupPageState extends State<SignupPage> {
               SizedBox(height: mediaQuery.size.height * 0.05),
               ElevatedButton(
                 onPressed: () {
-                  //toWelcome(context);
-                  services.register(phoneNumberController.text,
-                      emailController.text, passwordController.text);
+                  toWelcome(context);
                 },
                 child: RichText(
                   text: TextSpan(

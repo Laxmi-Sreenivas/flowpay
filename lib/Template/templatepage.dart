@@ -8,22 +8,17 @@ import 'package:flowpay/Template/topbar.dart';
 import 'package:flowpay/Transactions/transactionpage.dart';
 import 'package:flowpay/welcome/welcome.dart';
 import 'package:flutter/material.dart';
+import 'package:flowpay/services/services.dart';
 
 class PageTemplate extends StatefulWidget {
-  const PageTemplate({super.key});
-
+  final Services services;
+  const PageTemplate({super.key, required this.services});
   @override
   State<PageTemplate> createState() => _PageTemplateState();
 }
 
 class _PageTemplateState extends State<PageTemplate> {
   int pageIndex = 0;
-  List pages = [ //To Be Replaced By Actual Pages
-    Welcome(),
-    PaymentsPage(),
-    TransacationPage(),
-    SplitScreen()
-  ];
 
   void moveToIndex(int index) {
     setState(() {
@@ -33,11 +28,18 @@ class _PageTemplateState extends State<PageTemplate> {
 
   @override
   Widget build(BuildContext context) {
+    List pages = [
+      Welcome(services: widget.services),
+      PaymentsPage(),
+      TransacationPage(),
+      SplitScreen()
+    ];
+
     double appBarSize = MediaQuery.of(context).size.height * 0.08;
     double navBarSize = MediaQuery.of(context).size.height * 0.04;
 
     return Scaffold(
-      backgroundColor:Colors.black,
+      backgroundColor: Colors.black,
       appBar: TopBar(
         size: appBarSize,
       ),
